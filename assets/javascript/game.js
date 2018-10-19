@@ -3,7 +3,7 @@ var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "
 
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft = 12;
 var guesses = '';
 
 var winsElement = document.getElementById('wins');
@@ -15,25 +15,32 @@ document.onkeyup = function(event){
     var userGuess = event.key;
     var computerGuess = letter[Math.floor(Math.random() * letter.length)];
     
-    if (userGuess == computerGuess){
+    if (letter.indexOf(userGuess) == -1){
+         //how do i see that the user did not choose a valid letter (like a number or other character)
+        alert("That is not a valid guess. Try Again!");
+    } else if (userGuess == computerGuess){
         wins++;
-        guessesLeft = 10;
-    } else if (userGuess != computerGuess){
+        guessesLeft = 12;
+    } else if (userGuess != computerGuess ){
         guessesLeft--;  
+        guessesElement.textContent = "Guesses: " + userGuess;
+        // var newDiv = document.createElement(div);
+        // guessesElement.appendChild(newDiv);
+        
    if (guessesLeft < 1){
         losses++;
-        guessesLeft = 10;
+        guessesLeft = 12;
    };
 }
     
-    //how do i see that the user did not choose a valid letter (like a number or other character)
+   
 
     //how do i append the numbers guessed already next to each other
 
     //how do i implement toLowerCase to this program
     winsElement.textContent = "Wins: " + wins;
     guessesLeftElement.textContent = "Guesses Left: " + guessesLeft;
-    guessesElement.textContent = "Guesses: " + userGuess;
+   
     lossesElement.textContent = "Losses: " + losses;
-} ;//end of key up function
+};  //end of key up function
 
