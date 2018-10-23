@@ -4,7 +4,7 @@ var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "
 var wins = 0;
 var losses = 0;
 var guessesLeft = 12;
-var guesses = '';
+var guesses = [];
 
 var winsElement = document.getElementById('wins');
 var lossesElement = document.getElementById('losses');
@@ -23,9 +23,10 @@ document.onkeyup = function(event){
         guessesLeft = 12;
     } else if (userGuess != computerGuess ){
         guessesLeft--;  
-        guessesElement.textContent = "Guesses: " + userGuess;
+        // 
+        guesses.push(userGuess);
         // var newDiv = document.createElement(div);
-        // guessesElement.appendChild(newDiv);
+        guessesElement.textContent = "Guesses so far: " + guesses.join(' ');
         
    if (guessesLeft < 1){
         losses++;
